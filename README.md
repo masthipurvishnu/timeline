@@ -1,5 +1,7 @@
 # timeline
 
+1. For development or run localhost
+npm run dev
 ## Project setup
 ```
 npm install

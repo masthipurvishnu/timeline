@@ -101,11 +101,11 @@
 
 <script>
 import logo from '../assets/logo.svg'
-import Timeline from './Timeline.vue'
-
+import router from '../router'
+import { onMounted } from '@vue/runtime-core'
 export default {
     name: "Welcome",
-    components: { Timeline },
+    // components: { Timeline },
     data: () => ({
         ecosystem: [
             {
@@ -154,10 +154,10 @@ export default {
                 href: "https://vuetifyjs.com/getting-started/frequently-asked-questions",
             },
         ],
+        
         onTimeline: (() => {
-      alert(2)
-    })
-
+          router.push({ name: 'Timeline'})
+        })
     })
 }
 </script>
