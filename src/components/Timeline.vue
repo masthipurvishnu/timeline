@@ -1,50 +1,33 @@
 <template>
   <div id="app">
   <v-app id="inspire">
-    <v-card
-    >
-      <v-card
-      >
-        <v-btn
-          absolute
-          bottom
-          color="pink"
-          right
-          fab
-        >
-          <v-icon>mdi-plus</v-icon>
-        </v-btn>
-        <v-card class="pa-2 purple lighten-3">
-          <v-btn icon>
-            <v-icon>mdi-menu</v-icon>
-          </v-btn>
-          <h3 class="text-h6 font-weight-light text-center grow">
-            Timeline
-          </h3>
+    <v-card>
+      <v-card>
+        <v-card class="pa-2" elevation="5" style="border: 0 solid red">
           <Search></Search>
-          <v-avatar right="0">
-            <v-img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"></v-img>
-          </v-avatar>
         </v-card>
-          <v-container class="fill-height">
-            <v-row align="center">
-              <strong class="text-h1 font-weight-regular mr-6">{{new Date().getDate()}}</strong>
-              <v-row justify="end">
-                <div class="text-h5 font-weight-light">
-                  Mondaya
-                </div>
-                <div class="text-uppercase font-weight-light">
-                  February 2015
-                </div>
-              </v-row>
-            </v-row>
-          </v-container>
       </v-card>
       <v-card-text class="py-0">
-        <v-timeline
-          align-top
-          dense
-        >
+        <v-timeline>
+          <v-timeline-item v-for="data in state.tlData" :key="data.id">
+            <v-avatar size="40px" color="grey lighten-2" dark>
+              <v-icon>mdi-account</v-icon>
+            </v-avatar>
+            <v-card class="elevation-0">
+              <v-card-text>
+                <v-list-item-content>
+                  <v-list-item-title>{{data.title}}</v-list-item-title>
+                  <v-list-item-subtitle>{{data.subtitle}}</v-list-item-subtitle>
+                </v-list-item-content>
+                <v-list-item-action>
+                  <v-btn icon>
+                    <v-icon>mdi-account</v-icon>
+                  </v-btn>
+                </v-list-item-action>
+              </v-card-text>
+            </v-card>
+
+          </v-timeline-item>
           <v-timeline-item
             color="pink"
             small
@@ -61,10 +44,8 @@
               </v-col>
             </v-row>
           </v-timeline-item>
-  
           <v-timeline-item
             color="teal lighten-3"
-            small
           >
             <v-row class="pt-1 elevation-2">
               <v-col cols="3">
@@ -133,12 +114,41 @@
 
 <script>
 import Search from "./Search.vue";
-
+// import { setup } from '@componet-api/vue';
 export default {
     name: "Timeline",
-    data: () => ({
-    //
-    }),
-    components: { Search }
+    // data: () => ({
+    // //
+    // }),
+    components: { Search },
+    setup(props, context) {
+      const state = {
+        tlData : {
+          0: {
+            id: 0,
+            date: '5pm',
+            title: 'New Icon',
+            description: 'Mobile App',
+          },
+          1:{
+            id: 1,
+            date: '3-4pm',
+            title: 'Design Stand Up',
+            description: 'Hangouts',
+            participants:'test test test'
+          },
+          2:{
+            id: 2,
+            date: '5-6pm',
+            title: 'Testing',
+            description: 'Testing',
+            participants:'test test test'
+          }
+        }
+      }
+      return {
+        state
+      }
+    }
 }
 </script>

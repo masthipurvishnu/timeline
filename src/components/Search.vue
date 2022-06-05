@@ -1,9 +1,11 @@
 <template>
         <v-text-field
-            rounded
             prepend-inner-icon="mdi-magnify"
-            style="border: 0px solid red; width:200px"
+            style="border: 0px solid red; width:400px"
             v-model="model"
+            label="Search"
+            outlined
+            dense
             >
         </v-text-field>
 </template>
